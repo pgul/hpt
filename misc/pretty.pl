@@ -3,6 +3,9 @@
 # $Id$
 #
 # $Log$
+# Revision 1.7  2003/05/22 14:48:11  nssoft
+# Second try to fix error with "-pl" option.
+#
 # Revision 1.6  2003/05/19 13:14:24  nssoft
 # Try to fix error with "-pl" option.
 #
@@ -153,7 +156,14 @@ foreach $line (<LIST>) {
 }
 print "\n";
 
-if ($pl) {for ($i=0;$i<$pln;$i++) {$lines[$ln+1] = $plines[$i]; $ln++;} }
+if ($pl) {
+  if ($lines[$ln-1][0]) {
+    $ln++;
+  }
+  for ($i=0;$i<$pln;$i++) {
+    $lines[$ln] = $plines[$i]; $ln++;
+  }
+}
 
 sub max() {
         my ($i, $s);
