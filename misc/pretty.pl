@@ -3,6 +3,9 @@
 # $Id$
 #
 # $Log$
+# Revision 1.6  2003/05/19 13:14:24  nssoft
+# Try to fix error with "-pl" option.
+#
 # Revision 1.5  2003/04/21 10:30:02  nssoft
 # Bugfix
 #
@@ -133,7 +136,7 @@ foreach $line (<LIST>) {
       &max(3, $file);
       &max(4, $rest);
       &max(5, $desc);
-      if ($pl and $file eq "passthrough") {
+      if ($pl and $file=~/passthrough/i) {
         $plines[$pln] = [ (1, $type, $name, $file, $rest, $desc, $links) ];
         print ".";
         $pln++;
@@ -150,7 +153,7 @@ foreach $line (<LIST>) {
 }
 print "\n";
 
-if ($pl) {for ($i=0;$i<$pln;$i++) {$lines[$ln] = $plines[$i]; $ln++;} }
+if ($pl) {for ($i=0;$i<$pln;$i++) {$lines[$ln+1] = $plines[$i]; $ln++;} }
 
 sub max() {
         my ($i, $s);
