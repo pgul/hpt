@@ -3,6 +3,9 @@
 # $Id$
 #
 # $Log$
+# Revision 1.3  2002/11/17 01:39:00  stas_degteff
+# Use spawnvp() instead system() always if possible
+#
 # Revision 1.2  2002/01/27 14:38:17  stas
 # Add the '-c' option (copy mode) and change temp & old file names.
 #
