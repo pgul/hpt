@@ -277,7 +277,8 @@ int createTempPktFileName(s_link *link)
 
     counter = 0;
 	do {
- 		sprintf(pfileName, "%s%0x", tmpPFileName, counter);
+		sprintf(pfileName, "%s%0x", tmpPFileName, counter);
+		writeLogEntry(hpt_log,'1',"%s", pfileName);
 		counter++;
 	} while ((fexist(pfileName) || fileNameAlreadyUsed(NULL, pfileName)) &&
 			 (counter <= 15));
